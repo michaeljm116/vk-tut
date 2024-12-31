@@ -3,6 +3,7 @@ import "vendor:glfw"
 import "base:intrinsics"
 import "core:fmt"
 import "core:mem"
+import "core:log"
 
 main :: proc()
 {
@@ -22,6 +23,7 @@ main :: proc()
 		fmt.eprintf("\n")
 		free_all(context.temp_allocator)
 	}
+	context.logger = log.create_console_logger()
 	
 	init_app()
 	run_app()

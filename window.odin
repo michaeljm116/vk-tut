@@ -1,6 +1,7 @@
 package main
 import "vendor:glfw"
 import "core:fmt"
+import "core:log"
 
 Window :: struct
 {
@@ -16,8 +17,7 @@ init_window :: proc()
     glfw.WindowHint(glfw.CLIENT_API, glfw.NO_API)
     glfw.WindowHint(glfw.RESIZABLE, glfw.FALSE)
     g_window.handle = glfw.CreateWindow(g_window.width, g_window.height, "vktut", nil, nil)
-    if(g_window.handle == nil){
-        fmt.printf("Error, window creation failed: %s ", g_window.handle)
-        return
-    }
+    log.info("Creating GLFW Window")
+    if(g_window.handle == nil){log.error("Window Creation Failed")}
+    assert(g_window.handle != nil)
 }
